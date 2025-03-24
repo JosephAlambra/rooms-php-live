@@ -1,4 +1,8 @@
 <?php
+// Detailed error logging for database connection
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Use environment variables for database connection
 $host = getenv('DB_HOST');
 $username = getenv('DB_USERNAME');
@@ -6,22 +10,31 @@ $password = getenv('DB_PASSWORD');
 $database = getenv('DB_NAME');
 $port = getenv('DB_PORT') ?: 3306;
 
-// Ensure all required environment variables are set
-if (!$host || !$username || !$password || !$database) {
-    die("Missing database configuration. Please set all database environment variables.");
-}
+// Log environment variables for debugging
+error_log("Attempting to connect to:");
+error_log("Host: $host");
+error_log("Username: $username");
+error_log("Database: $database");
+error_log("Port: $port");
+
+// Try to resolve hostname
+$resolved_ip = gethostbyname($host);
+error_log("Resolved IP: $resolved_ip");
 
 // Create connection
 try {
-    $conn = new mysqli($host, $username, $password, $database, $port);
+    // Increase connection timeout
+    $conn = new mysqli($host, $username, $password, $database, $port, null, MYSQLI_CLIENT_CONNECT_TIMEOUT);
 
     // Check connection
     if ($conn->connect_error) {
         throw new Exception("Connection failed: " . $conn->connect_error);
     }
+    
+    echo "Successfully connected to the database!";
 } catch (Exception $e) {
-    // Log the error and provide a generic error message
-    error_log($e->getMessage());
-    die("Database connection error. Please contact support.");
+    // Log detailed error
+    error_log("Database Connection Error: " . $e->getMessage());
+    die("Detailed connection error: " . $e->getMessage());
 }
 ?>
