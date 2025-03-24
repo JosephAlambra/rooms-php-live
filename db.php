@@ -2,7 +2,7 @@
 $servername = "bzgf4ndakhr5jch691lv-mysql.services.clever-cloud.com";
 $port = 3306;
 $username = "u0xcngdlpa9p7jby";
-$password = "your_actual_password"; // replace this!
+$password = "W4yKKXsdBUsciNBTUqNX"; // replace this!
 $dbname = "bzgf4ndakhr5jch691lv";
 
 // Create connection
