@@ -23,8 +23,11 @@ error_log("Resolved IP: $resolved_ip");
 
 // Create connection
 try {
-    // Increase connection timeout
-    $conn = new mysqli($host, $username, $password, $database, $port, null, MYSQLI_CLIENT_CONNECT_TIMEOUT);
+    // Standard connection with increased timeout
+    $conn = new mysqli($host, $username, $password, $database, $port);
+    
+    // Set connection timeout manually
+    $conn->options(MYSQLI_OPT_CONNECT_TIMEOUT, 10);
 
     // Check connection
     if ($conn->connect_error) {
