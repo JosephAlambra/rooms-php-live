@@ -2,17 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: text/plain");
 
-$host = "bzgf4ndakhr5jch691lv-mysql.services.clever-cloud.com";
-$dbname = "bzgf4ndakhr5jch691lv";
-$username = "u0xcngdlpa9p7jby";
-$password = "W4yKKXsdBUsciNBTUqNX"; // replace this!
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    echo "0";
-    exit();
-}
+include 'db.php';
 
 $room = 'GV309';
 
