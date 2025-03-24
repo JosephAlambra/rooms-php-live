@@ -33,8 +33,6 @@ try {
     if ($conn->connect_error) {
         throw new Exception("Connection failed: " . $conn->connect_error);
     }
-    
-    echo "Successfully connected to the database!";
 } catch (Exception $e) {
     // Log detailed error
     error_log("Database Connection Error: " . $e->getMessage());

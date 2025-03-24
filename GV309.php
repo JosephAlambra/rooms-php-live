@@ -15,15 +15,12 @@ if ($result && $result->num_rows > 0) {
     $schedule = $row['schedule'];
     $override = $row['override'];
 
-    // Show debug info for testing in browser
-    echo "Schedule: $schedule, Override: $override\n";
-
     if ($override == 0) {
-        echo "Final Output: 0"; // Force OFF
+        echo "0"; // Force OFF
     } elseif ($override == 1) {
-        echo "Final Output: 1"; // Force ON
+        echo "1"; // Force ON
     } else {
-        echo "Final Output: $schedule"; // Normal operation
+        echo $schedule; // Normal operation
     }
 }
 
