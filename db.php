@@ -1,12 +1,11 @@
 <?php
 $servername = "bzgf4ndakhr5jch691lv-mysql.services.clever-cloud.com";
-$port = 3306;
 $username = "u0xcngdlpa9p7jby";
 $password = "W4yKKXsdBUsciNBTUqNX"; // replace this!
 $dbname = "bzgf4ndakhr5jch691lv";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
