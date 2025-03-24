@@ -1,7 +1,10 @@
 FROM php:8.2-apache
 
-# Copy all files to the Apache server root
+# Install mysqli extension
+RUN docker-php-ext-install mysqli
+
+# Copy project files to Apache's web directory
 COPY . /var/www/html/
 
-# Expose port 80 for web access
+# Expose port 80
 EXPOSE 80
