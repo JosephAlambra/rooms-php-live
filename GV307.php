@@ -4,7 +4,7 @@ header("Content-Type: text/plain");
 
 include 'db.php';
 
-$room = 'GV307';
+$room = 'GV 307';
 
 // Get the current schedule and override values for the room
 $sql = "SELECT schedule, override FROM room_status WHERE room = '$room' LIMIT 1";
